@@ -11,12 +11,12 @@ import {CountrySearchService} from './CountrySearchService'
 export class AppComponent  {
   private loading: boolean = false;
 
-  constructor(private countries:CountrySearchService) {}
+  constructor(private countries: CountrySearchService) {}
 
   doSearch(searchString:string) {
     this.loading = true;
     this.countries
-      .search(searchString)
+      .searchCountriesByName(searchString)
       .then(() => (this.loading = false));
   }
 }
