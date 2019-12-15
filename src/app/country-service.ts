@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
-import 'rxjs/add/operator/toPromise'
+import {Observable} from "rxjs";
+import {map} from "rxjs/operators";
 import {CountrySearchService} from "./country-search-service";
 
 @Injectable()
@@ -12,10 +13,13 @@ export class CountryService {
     public isInCommonMarket(countryCode: string) {
         let countryCall = this.countryService.getCountryByCountryCode(countryCode);
 
-        countryCall.subscribe(countries =>
-            countries.length > 0 && countries[0].regionBloc === 'EU'
+        return countryCall.subscribe(
+          pipe(
+            map(countries =>
+              return countries.length > 0 && countries[0].regionBloc === 'EU';
+            )
+          )
         );
-        return false;
     }
 
     public isInAmericas(countryCode: string) {
