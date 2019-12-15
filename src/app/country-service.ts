@@ -15,9 +15,9 @@ export class CountryService {
 
         return countryCall.subscribe(
           pipe(
-            map(countries =>
+            map(countries => {
               return countries.length > 0 && countries[0].regionBloc === 'EU';
-            )
+            })
           )
         );
     }
