@@ -12,7 +12,7 @@ describe("Testing my-app", () => {
         TestBed.configureTestingModule({
             declarations: [AppComponent],
             providers: [{provide: CountrySearchService, useValue: mockedService}]
-        }).compileComponents();
+        });
         fixture = TestBed.createComponent(AppComponent);
     });
 
