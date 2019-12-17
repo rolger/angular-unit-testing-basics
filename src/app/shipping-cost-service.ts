@@ -5,10 +5,11 @@ import {CountryService} from "./country-service";
 
 @Injectable()
 export class ShippingCostService {
-  
-  constructor(private countryService: CountryService) {}
 
-     calculate(country: string, options:string) {
+    constructor(private countryService: CountryService) {
+    }
+
+    calculate(country: string, options: string): Money {
         let cost: Money;
 
         if (this.countryService.isInCommonMarket(country)) {
@@ -25,8 +26,8 @@ export class ShippingCostService {
 
         } else {
             // other countries, e.g. Asia
-            let km = this.countryService.distanceTo(country);
-            cost = new Money(km).percentage(10);
+            //let km = this.countryService.distanceTo(country);
+            cost = new Money(0).percentage(10);
         }
 
         return cost;

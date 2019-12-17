@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import 'rxjs/add/operator/toPromise'
 import {CountrySearchService} from "./country-search-service";
+import {Country} from "./country";
 
 @Injectable()
 export class CountryService {
@@ -9,26 +10,32 @@ export class CountryService {
     constructor(private countryService: CountrySearchService) {
     }
 
-    public isInCommonMarket(countryCode: string) {
-        let countryCall = this.countryService.getCountryByCountryCode(countryCode);
+    public async isInCommonMarket(countryCode: string) {
+        let countries = await this.countryService.getCountryByCountryCode(countryCode).toPromise();
 
-        countryCall.subscribe(countries =>
-            countries.length > 0 && countries[0].regionBloc === 'EU'
-        );
-        return false;
+        return countries.length > 0 && countries[0].regionBloc === 'EU';
     }
 
-    public isInAmericas(countryCode: string) {
-        let countryCall = this.countryService.getCountryByCountryCode(countryCode);
+    public async isInAmericas(countryCode: string) {
+        let countries = await this.countryService.getCountryByCountryCode(countryCode).toPromise();
 
-        countryCall.subscribe(countries =>
-            countries.length > 0 && countries[0].region === 'Americas'
-        );
-        return false;
+        return countries.length > 0 && countries[0].region === 'Americas';
     }
 
-    public distanceTo(countryCode: string): number {
-        return 10;
+    public async distanceTo(countryCode: string) {
+        let austria: Country;
+        let other: Country;
+
+        await this.countryService.getCountryByCountryCode(this.homeBase).toPromise()
+            .then(result => austria = result[0]);
+        await this.countryService.getCountryByCountryCode(countryCode).toPromise()
+            .then(result => other = result[0]);
+
+        if (austria === undefined || other === undefined) {
+            return 0;
+        }
+
+        return this.distBetween(austria.latitude, austria.longitude, other.latitude, other.longitude);
     }
 
     private distBetween(fromLatitude: number, fromLongitude: number, toLatitude: number, toLongitude: number): number {

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
-import {CountrySearchService} from './CountrySearchService'
 import {Country} from "./country";
+import {CountrySearchService} from "./country-search-service";
 
 
 @Component({
