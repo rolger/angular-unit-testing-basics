@@ -10,8 +10,8 @@ import {CountrySearchService} from "./country-search-service";
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    private loading: boolean = false;
-    private countries: Country [];
+    loading: boolean = false;
+    countries: Country [];
 
     constructor(private searchService: CountrySearchService) {
         this.countries = [];
