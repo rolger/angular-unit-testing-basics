@@ -1,22 +1,23 @@
 import {Injectable} from "@angular/core";
 import {Money} from "./money";
 import {CountryService} from "./country-service";
-
+import {Country} from "./country";
+import {LetterSendService} from "./letter-send-service";
 
 @Injectable()
 export class ShippingCostService {
 
-    constructor(private countryService: CountryService) {
+    constructor(private countryService: CountryService, private sendService: LetterSendService) {
     }
 
-    calculate(country: string, options: string): Money {
+    calculateCostsAndSend(content: string, destination: Country, options: string) {
         let cost: Money;
 
-        if (this.countryService.isInCommonMarket(country)) {
+        if (this.countryService.isInCommonMarket(destination)) {
             // flat rate in EU
             cost = new Money(5);
 
-        } else if (this.countryService.isInAmericas(country)) {
+        } else if (this.countryService.isInAmericas(destination)) {
             // US & Canada & South American
             if (options === 'EXPRESS') {
                 cost = new Money(40);
@@ -26,10 +27,10 @@ export class ShippingCostService {
 
         } else {
             // other countries, e.g. Asia
-            //let km = this.countryService.distanceTo(country);
+            let km = this.countryService.distanceTo(destination);
             cost = new Money(0).percentage(10);
         }
 
-        return cost;
+        this.sendService.sendTo(destination, content , cost);
     }
 }

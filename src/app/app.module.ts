@@ -3,16 +3,18 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
-import {AppComponent} from './app.component';
+import {CountryComponent} from './country.component';
 import {CountrySearchService} from "./country-search-service";
 import {ShippingCostService} from "./shipping-cost-service";
 import {CountryService} from "./country-service";
+import {LetterComponent} from "./letter.component";
+import {LetterSendService} from "./letter-send-service";
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule],
-    declarations: [AppComponent],
-    bootstrap: [AppComponent],
-    providers: [CountrySearchService, ShippingCostService, CountryService]
+    declarations: [CountryComponent, LetterComponent],
+    bootstrap: [LetterComponent],
+    providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService]
 })
 export class AppModule {
 }
