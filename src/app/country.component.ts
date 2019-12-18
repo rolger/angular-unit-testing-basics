@@ -5,11 +5,11 @@ import {CountrySearchService} from "./country-search-service";
 
 
 @Component({
-    selector: 'my-app',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    selector: 'country-search-app',
+    templateUrl: './country.component.html',
+    styleUrls: ['./country.component.css']
 })
-export class AppComponent {
+export class CountryComponent {
     loading: boolean = false;
     countries: Country [];
 

@@ -6,36 +6,27 @@ import {Country} from "./country";
 @Injectable()
 export class CountryService {
     homeBase: string = 'AT';
+    austria: Country;
 
     constructor(private countryService: CountrySearchService) {
+        countryService.getCountryByCountryCode(this.homeBase)
+            .subscribe(countries => this.austria = countries[0]);
     }
 
-    public async isInCommonMarket(countryCode: string) {
-        let countries = await this.countryService.getCountryByCountryCode(countryCode).toPromise();
-
-        return countries.length > 0 && countries[0].regionBloc === 'EU';
+    public isInCommonMarket(country: Country) {
+        return country.regionBloc === 'EU';
     }
 
-    public async isInAmericas(countryCode: string) {
-        let countries = await this.countryService.getCountryByCountryCode(countryCode).toPromise();
-
-        return countries.length > 0 && countries[0].region === 'Americas';
+    public isInAmericas(country: Country) {
+        return country.region === 'Americas';
     }
 
-    public async distanceTo(countryCode: string) {
-        let austria: Country;
-        let other: Country;
-
-        await this.countryService.getCountryByCountryCode(this.homeBase).toPromise()
-            .then(result => austria = result[0]);
-        await this.countryService.getCountryByCountryCode(countryCode).toPromise()
-            .then(result => other = result[0]);
-
-        if (austria === undefined || other === undefined) {
+    public distanceTo(other: Country) {
+        if (this.austria === undefined || other === undefined) {
             return 0;
         }
 
-        return this.distBetween(austria.latitude, austria.longitude, other.latitude, other.longitude);
+        return this.distBetween(this.austria.latitude, this.austria.longitude, other.latitude, other.longitude);
     }
 
     private distBetween(fromLatitude: number, fromLongitude: number, toLatitude: number, toLongitude: number): number {
