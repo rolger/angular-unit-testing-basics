@@ -30,6 +30,6 @@ export class ShippingCostService {
             cost = new Money(0).percentage(10);
         }
 
-        this.sendService.sendTo(destination, content, cost);
+        //this.sendService.sendTo(destination, content, cost);
     }
 }
