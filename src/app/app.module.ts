@@ -10,10 +10,12 @@ import {CountryService} from './country-service';
 import {LetterSendService} from './letter-send-service';
 import {LetterComponent} from './letter.component';
 import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [BrowserModule,
         FormsModule,
+        BrowserAnimationsModule,
         HttpClientModule,
         MatButtonModule,
         MatFormFieldModule,
