@@ -8,11 +8,12 @@ import {CountrySearchService} from './country-search-service';
 import {ShippingCostService} from './shipping-cost-service';
 import {CountryService} from './country-service';
 import {LetterSendService} from './letter-send-service';
+import {LetterComponent} from './letter.component';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule],
-    declarations: [CountryComponent],
-    bootstrap: [CountryComponent],
+    declarations: [CountryComponent, LetterComponent],
+    bootstrap: [LetterComponent],
     providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService]
 })
 export class AppModule {
