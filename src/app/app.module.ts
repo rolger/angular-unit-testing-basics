@@ -4,17 +4,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
 import {CountryComponent} from './country.component';
-import {CountrySearchService} from "./country-search-service";
-import {ShippingCostService} from "./shipping-cost-service";
-import {CountryService} from "./country-service";
-import {LetterComponent} from "./letter.component";
-import {LetterSendService} from "./letter-send-service";
+import {CountrySearchService} from './country-search-service';
+import {ShippingCostService} from './shipping-cost-service';
+import {CountryService} from './country-service';
 
 @NgModule({
     imports: [BrowserModule, FormsModule, HttpClientModule],
-    declarations: [CountryComponent, LetterComponent],
-    bootstrap: [LetterComponent],
-    providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService]
+    declarations: [CountryComponent],
+    bootstrap: [CountryComponent],
+    providers: [CountrySearchService, ShippingCostService, CountryService]
 })
 export class AppModule {
 }
