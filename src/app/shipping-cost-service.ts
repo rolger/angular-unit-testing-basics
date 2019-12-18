@@ -1,13 +1,12 @@
-import {Injectable} from "@angular/core";
-import {Money} from "./money";
-import {CountryService} from "./country-service";
-import {Country} from "./country";
-import {LetterSendService} from "./letter-send-service";
+import {Injectable} from '@angular/core';
+import {Money} from './money';
+import {CountryService} from './country-service';
+import {Country} from './country';
 
 @Injectable()
 export class ShippingCostService {
 
-    constructor(private countryService: CountryService, private sendService: LetterSendService) {
+    constructor(private countryService: CountryService) {
     }
 
     calculateCostsAndSend(content: string, destination: Country, options: string) {
@@ -31,6 +30,6 @@ export class ShippingCostService {
             cost = new Money(0).percentage(10);
         }
 
-        this.sendService.sendTo(destination, content , cost);
+        this.sendService.sendTo(destination, content, cost);
     }
 }
