@@ -1,13 +1,13 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-import {Country} from "./country";
-import {Observable} from "rxjs";
-import {map} from "rxjs/operators";
+import {Country} from './country';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class CountrySearchService {
-    apiURL: string = "https://restcountries.eu/rest/v2/all";
+    apiURL: string = 'https://restcountries.eu/rest/v2/all';
 
     constructor(private http: HttpClient) {
     }
@@ -24,12 +24,13 @@ export class CountrySearchService {
                                     item.alpha2Code,
                                     item.flag,
                                     item.region,
-                                    item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ? '' : item.regionalBlocs[0].acronym,
+                                    item.regionalBlocs === undefined || item.regionalBlocs.length === 0
+                                        ? '' : item.regionalBlocs[0].acronym,
                                     item.latlng[0],
                                     item.latlng[1]
-                                )
+                                );
                             }
-                        )
+                        );
                 }));
     }
 
@@ -45,12 +46,13 @@ export class CountrySearchService {
                                     item.alpha2Code,
                                     item.flag,
                                     item.region,
-                                    item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ? '' : item.regionalBlocs[0].acronym,
+                                    item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ?
+                                        '' : item.regionalBlocs[0].acronym,
                                     item.latlng[0],
                                     item.latlng[1]
-                                )
+                                );
                             }
-                        )
+                        );
                 }));
     }
 }

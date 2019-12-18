@@ -1,22 +1,22 @@
 <form class="form-inline">
     <div class="form-group">
-        <input type="search"
+        <input #search
                class="form-control"
                placeholder="Enter search string"
-               #search>
+               type="search">
     </div>
 
-    <button type="button" class="btn btn-primary" (click)="doSearch(search.value)">Search</button>
+    <button (click)="doSearch(search.value)" class="btn btn-primary" type="button">Search</button>
 </form>
 
 <hr/>
 
 <div class="text-center">
-    <p class="lead" *ngIf="loading">Loading...</p>
+    <p *ngIf="loading" class="lead">Loading...</p>
 </div>
 
 <ul class="list-group">
-    <li class="list-group-item" *ngFor="let country of countries">
-        <img src="{{country.flag}}" border="1" height="12" width="21"> {{country.name}}
+    <li *ngFor="let country of countries" class="list-group-item">
+        <img border="1" height="12" src="{{country.flag}}" width="21"> {{country.name}}
     </li>
 </ul>

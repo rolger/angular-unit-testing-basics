@@ -1,10 +1,10 @@
-import {CountryComponent} from "./country.component";
-import {CountrySearchService} from "./country-search-service";
-import {of} from "rxjs";
-import {Country} from "./country";
+import {CountryComponent} from './country.component';
+import {CountrySearchService} from './country-search-service';
+import {of} from 'rxjs';
+import {Country} from './country';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-describe("Testing CountryComponent", () => {
+describe('Testing CountryComponent', () => {
     let fixture: ComponentFixture<CountryComponent>;
     let component: CountryComponent;
     let mockedService;

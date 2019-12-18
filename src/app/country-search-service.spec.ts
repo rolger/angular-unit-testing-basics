@@ -1,9 +1,9 @@
-import {TestBed} from "@angular/core/testing";
-import {CountrySearchService} from "./country-search-service";
-import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {Country} from "./country";
+import {TestBed} from '@angular/core/testing';
+import {CountrySearchService} from './country-search-service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {Country} from './country';
 
-describe("Testing CountrySearchService", () => {
+describe('Testing CountrySearchService', () => {
     let service: CountrySearchService;
     let httpTestingController: HttpTestingController;
     let COUNTRIES;
@@ -30,7 +30,7 @@ describe("Testing CountrySearchService", () => {
             (c) => {
                 expect(c.length).toBe(0);
             });
-        const req = httpTestingController.expectOne("https://restcountries.eu/rest/v2/all");
+        const req = httpTestingController.expectOne('https://restcountries.eu/rest/v2/all');
         req.flush([]);
 
     });
@@ -44,7 +44,7 @@ describe("Testing CountrySearchService", () => {
             }
         );
 
-        const req = httpTestingController.expectOne("https://restcountries.eu/rest/v2/all");
+        const req = httpTestingController.expectOne('https://restcountries.eu/rest/v2/all');
         req.flush(COUNTRIES);
         //req.flush('[{"name": "austria", "alpha2Code": "AT"}]');
     });

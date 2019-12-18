@@ -1,11 +1,11 @@
-import {Injectable} from "@angular/core";
-import 'rxjs/add/operator/toPromise'
-import {CountrySearchService} from "./country-search-service";
-import {Country} from "./country";
+import {Injectable} from '@angular/core';
+import 'rxjs/add/operator/toPromise';
+import {CountrySearchService} from './country-search-service';
+import {Country} from './country';
 
 @Injectable()
 export class CountryService {
-    homeBase: string = 'AT';
+    homeBase = 'AT';
     austria: Country;
 
     constructor(private countryService: CountrySearchService) {
@@ -30,15 +30,15 @@ export class CountryService {
     }
 
     private distBetween(fromLatitude: number, fromLongitude: number, toLatitude: number, toLongitude: number): number {
-        let earthRadius: number = 6371000; // meters
-        let fLat: number = this.toRadians(fromLatitude);
-        let toLat: number = this.toRadians(toLatitude);
-        let diffLat: number = this.toRadians(toLatitude - fromLatitude);
-        let diffLng: number = this.toRadians(toLongitude - fromLongitude);
-        let a: number = Math.sin(diffLat / 2) * Math.sin(diffLat / 2)
+        const earthRadius = 6371000; // meters
+        const fLat: number = this.toRadians(fromLatitude);
+        const toLat: number = this.toRadians(toLatitude);
+        const diffLat: number = this.toRadians(toLatitude - fromLatitude);
+        const diffLng: number = this.toRadians(toLongitude - fromLongitude);
+        const a = Math.sin(diffLat / 2) * Math.sin(diffLat / 2)
             + Math.cos(fLat) * Math.cos(toLat) * Math.sin(diffLng / 2) * Math.sin(diffLng / 2);
-        let c: number = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        let dist: number = (earthRadius * c);
+        const c: number = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const dist: number = (earthRadius * c);
         return dist;
     }
 
