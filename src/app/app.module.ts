@@ -9,9 +9,23 @@ import {ShippingCostService} from './shipping-cost-service';
 import {CountryService} from './country-service';
 import {LetterSendService} from './letter-send-service';
 import {LetterComponent} from './letter.component';
+import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
 
 @NgModule({
-    imports: [BrowserModule, FormsModule, HttpClientModule],
+    imports: [BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatSelectModule],
+    exports: [
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatSelectModule],
     declarations: [CountryComponent, LetterComponent],
     bootstrap: [LetterComponent],
     providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService]
