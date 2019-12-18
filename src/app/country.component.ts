@@ -1,16 +1,15 @@
 import {Component} from '@angular/core';
 
-import {Country} from "./country";
-import {CountrySearchService} from "./country-search-service";
-
+import {Country} from './country';
+import {CountrySearchService} from './country-search-service';
 
 @Component({
-    selector: 'country-search-app',
+    selector: 'app-country-search',
     templateUrl: './country.component.html',
     styleUrls: ['./country.component.css']
 })
 export class CountryComponent {
-    loading: boolean = false;
+    loading = false;
     countries: Country [];
 
     constructor(private searchService: CountrySearchService) {
@@ -22,8 +21,8 @@ export class CountryComponent {
         this.searchService
             .searchCountriesByName(searchString)
             .subscribe((data) => {
-              this.countries = data;
-              this.loading = false;
+                this.countries = data;
+                this.loading = false;
             });
     }
 }
