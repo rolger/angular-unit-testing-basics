@@ -29,7 +29,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         MatCheckboxModule,
         MatSelectModule],
     declarations: [CountryComponent, LetterComponent],
-    bootstrap: [LetterComponent],
+    bootstrap: [CountryComponent],
     providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService]
 })
 export class AppModule {

@@ -4,7 +4,7 @@ import {Country} from './country';
 import {CountrySearchService} from './country-search-service';
 
 @Component({
-    selector: 'app-country-search',
+    selector: 'app-country',
     templateUrl: './country.component.html',
     styleUrls: ['./country.component.css']
 })
