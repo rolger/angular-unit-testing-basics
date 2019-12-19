@@ -9,7 +9,8 @@ import {ShippingCostService} from './shipping-cost-service';
 import {CountryService} from './country-service';
 import {LetterSendService} from './letter-send-service';
 import {LetterComponent} from './letter.component';
-import {MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
+import {AppComponent} from './app.component';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -28,8 +29,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         MatInputModule,
         MatCheckboxModule,
         MatSelectModule],
-    declarations: [CountryComponent, LetterComponent],
-    bootstrap: [CountryComponent],
+    declarations: [
+        AppComponent,
+        CountryComponent,
+        LetterComponent
+    ],
+    bootstrap: [AppComponent],
     providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService]
 })
 export class AppModule {
