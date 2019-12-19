@@ -1,10 +1,7 @@
 import {CountryComponent} from './country.component';
-import {CountrySearchService} from './country-search-service';
-import {of} from 'rxjs';
-import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {Country} from './country';
 
-describe('Testing CountryComponent', () => {
+describe('CountryComponent', () => {
     let COUNTRIES;
 
     beforeEach(() => {
@@ -13,11 +10,15 @@ describe('Testing CountryComponent', () => {
         ];
     });
 
-    it('should load countries via search', function () {
+    describe('doSearch()', () => {
 
-    });
+        it('should load countries via search', function () {
 
-    it('should should be in state loading false', function () {
+        });
+
+        it('should should be in state loading false', function () {
+
+        });
 
     });
 

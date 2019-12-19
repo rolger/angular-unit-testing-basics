@@ -3,6 +3,7 @@ import {ShippingCostService} from './shipping-cost-service';
 import {LetterSendService} from './letter-send-service';
 import {CountryService} from './country-service';
 import {Money} from './money';
+import {TestBed} from '@angular/core/testing';
 import anything = jasmine.anything;
 
 describe('ShippingCostService', () => {
@@ -14,7 +15,14 @@ describe('ShippingCostService', () => {
         stubCountryService = jasmine.createSpyObj(['isInCommonMarket', 'isInAmericas', 'distanceTo']);
         mockSendService = jasmine.createSpyObj<LetterSendService>(['sendTo']);
 
-        service = new ShippingCostService(stubCountryService, mockSendService);
+        TestBed.configureTestingModule({
+            providers: [
+                ShippingCostService,
+                {provide: CountryService, useValue: stubCountryService},
+                {provide: LetterSendService, useValue: mockSendService}
+            ],
+        });
+        service = TestBed.get(ShippingCostService);
     });
 
     describe('calculateCostsAndSend()', () => {

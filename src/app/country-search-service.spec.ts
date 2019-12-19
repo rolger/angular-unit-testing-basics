@@ -1,4 +1,4 @@
-describe('Testing CountrySearchService', () => {
+describe('CountrySearchService', () => {
     let COUNTRIES;
 
     beforeEach(() => {
@@ -23,13 +23,15 @@ describe('Testing CountrySearchService', () => {
 
     });
 
+    describe('getCountryByCountryCode()', () => {
 
-    it('should call a http GET request with empty result', () => {
+        it('should call a http GET request with empty result', () => {
+
+        });
+
+        it('should filter the countryCode', () => {
+
+        });
 
     });
-
-    it('should filter the countryCode', () => {
-
-    });
-})
-;
+});

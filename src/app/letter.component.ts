@@ -19,6 +19,9 @@ export class LetterComponent implements OnInit {
 
     constructor(private searchService: CountrySearchService, private deliveryService: ShippingCostService) {
         this.countries = [];
+        this.selectedDestination = null;
+        this.content = '';
+        this.isExpressMode = false;
     }
 
     ngOnInit() {

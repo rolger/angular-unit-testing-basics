@@ -27,8 +27,8 @@ export class ShippingCostService {
 
         } else {
             // other countries, e.g. Asia
-            let km = this.countryService.distanceTo(destination);
-            cost = new Money(0).percentage(10);
+            const km = this.countryService.distanceTo(destination);
+            cost = new Money(km).percentage(10);
         }
 
         this.sendService.sendTo(destination, content, cost);
