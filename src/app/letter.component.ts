@@ -36,7 +36,7 @@ export class LetterComponent implements OnInit {
     send() {
         this.deliveryService.calculateCostsAndSend(this.content, this.selectedDestination,
             this.isExpressMode ? 'EXPRESS' : 'Normal');
-        
+
         this.content = '';
         this.isExpressMode = false;
         this.selectedDestination = null;
