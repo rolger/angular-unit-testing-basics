@@ -1,17 +1,16 @@
 <h2 class="example-h2">Send your personal letter</h2>
+
 <mat-card>
     <mat-card-content>
 
-
-
-        <textarea cols="30" rows="4" [(ngModel)] = "content"></textarea>
+        <textarea cols="30" rows="4" [(ngModel)]="content"></textarea>
 
         <section class="example-section">
             <mat-checkbox class="example-margin" [(ngModel)]="isExpressMode" name="mode">Express</mat-checkbox>
         </section>
 
-
         <mat-label>Select destination</mat-label>
+
         <mat-select [(ngModel)]="selectedDestination" name="dest">
             <mat-option *ngFor="let country of countries" [value]="country">
                 {{country.name}}
