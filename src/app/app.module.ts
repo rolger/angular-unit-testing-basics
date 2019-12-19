@@ -12,6 +12,7 @@ import {LetterComponent} from './letter.component';
 import {AppComponent} from './app.component';
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/typings/card';
 
 @NgModule({
     imports: [BrowserModule,
@@ -22,13 +23,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         MatFormFieldModule,
         MatInputModule,
         MatCheckboxModule,
-        MatSelectModule],
+        MatSelectModule,
+        MatCardModule],
     exports: [
         MatButtonModule,
         MatFormFieldModule,
         MatInputModule,
         MatCheckboxModule,
-        MatSelectModule],
+        MatSelectModule,
+        MatCardModule],
     declarations: [
         AppComponent,
         CountryComponent,
