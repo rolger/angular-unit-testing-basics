@@ -10,9 +10,8 @@ import {CountryService} from './country-service';
 import {LetterSendService} from './letter-send-service';
 import {LetterComponent} from './letter.component';
 import {AppComponent} from './app.component';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/typings/card';
 
 @NgModule({
     imports: [BrowserModule,
