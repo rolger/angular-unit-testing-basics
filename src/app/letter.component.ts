@@ -34,6 +34,11 @@ export class LetterComponent implements OnInit {
     }
 
     send() {
+        if (this.selectedDestination == null) {
+            alert('Select a country!');
+            return;
+        }
+
         this.deliveryService.calculateCostsAndSend(this.content, this.selectedDestination,
             this.isExpressMode ? 'EXPRESS' : 'Normal');
 
