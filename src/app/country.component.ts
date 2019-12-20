@@ -25,4 +25,18 @@ export class CountryComponent {
                 this.loading = false;
             });
     }
+
+    doSearchAsync(searchString: string) {
+        this.loading = true;
+
+        var p = new Promise((resolve) => {
+            this.searchService
+                .searchCountriesByName(searchString)
+                .subscribe((data) => {
+                    this.countries = data;
+                    this.loading = false;
+                });
+            resolve();
+        });
+    }
 }
