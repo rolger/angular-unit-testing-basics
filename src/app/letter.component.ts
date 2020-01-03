@@ -51,11 +51,11 @@ export class LetterComponent implements OnInit {
         this.deliveryService.calculateCostsAndSend(this.content, this.selectedDestination,
             this.isExpressMode ? 'EXPRESS' : 'Normal');
 
-        this.message = { type: 'success', text: 'Your letter has been sent.' };
         this.content = '';
         this.isExpressMode = false;
         this.selectedDestination = null;
 
+        this.message = { type: 'success', text: 'Your letter has been sent.' };
         setTimeout (() => {
             this.message = undefined;
         }, 2000);
