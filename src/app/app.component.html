@@ -1,5 +1,14 @@
-<h1>{{title}}</h1>
+
+<section class="mat-typography title-group">
+    <h1>{{title}}</h1>
+    <mat-divider></mat-divider>
+</section>
 
 
-<app-letter></app-letter>
-<app-country></app-country>
+<mat-tab-group>
+    <mat-tab label="Send a letter"> <app-letter></app-letter></mat-tab>
+    <mat-tab label="Search countries"><app-country></app-country></mat-tab>
+</mat-tab-group>
+
+
+

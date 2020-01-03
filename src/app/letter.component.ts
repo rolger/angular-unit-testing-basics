@@ -17,6 +17,8 @@ export class LetterComponent implements OnInit {
     selectedDestination: Country;
     isExpressMode: boolean;
 
+    message: any;
+
     constructor(private searchService: CountrySearchService, private deliveryService: ShippingCostService) {
         this.countries = [];
         this.selectedDestination = null;
@@ -37,16 +39,25 @@ export class LetterComponent implements OnInit {
     }
 
     send() {
+        if (this.content == '') {
+            this.message = { type: 'error', text: 'You must enter a text.' };
+            return;
+        }
         if (this.selectedDestination == null) {
-            alert('Select a country!');
+            this.message = { type: 'error', text: 'You must select a destination.' };
             return;
         }
 
         this.deliveryService.calculateCostsAndSend(this.content, this.selectedDestination,
             this.isExpressMode ? 'EXPRESS' : 'Normal');
 
+        this.message = { type: 'success', text: 'Your letter has been sent.' };
         this.content = '';
         this.isExpressMode = false;
         this.selectedDestination = null;
+
+        setTimeout (() => {
+            this.message = undefined;
+        }, 2000);
     }
 }

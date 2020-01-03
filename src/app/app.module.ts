@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -10,34 +10,25 @@ import {CountryService} from './country-service';
 import {LetterSendService} from './letter-send-service';
 import {LetterComponent} from './letter.component';
 import {AppComponent} from './app.component';
-import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AngularMaterialModule} from './angular-material.moduls';
 
 @NgModule({
     imports: [BrowserModule,
         FormsModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatSelectModule,
-        MatCardModule],
-    exports: [
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatSelectModule,
-        MatCardModule],
+        AngularMaterialModule
+    ],
     declarations: [
         AppComponent,
         CountryComponent,
         LetterComponent
     ],
     bootstrap: [AppComponent],
-    providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService]
+    providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }
+
