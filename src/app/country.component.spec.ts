@@ -1,11 +1,8 @@
 import {CountryComponent} from './country.component';
 import {Country} from './country';
-import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {CountrySearchService} from './country-search-service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {of} from 'rxjs/internal/observable/of';
-import {Scheduler} from 'rxjs/internal/Rx';
-import {scheduled} from 'rxjs/internal/scheduled/scheduled';
 
 describe('CountryComponent', () => {
     let COUNTRIES;
@@ -44,17 +41,7 @@ describe('CountryComponent', () => {
             expect(component.countries).toEqual(COUNTRIES);
         });
 
-        it('should should be in state loading false', fakeAsync(() => {
-            stubCountrySearchService.searchCountriesByName.and.returnValue(scheduled(COUNTRIES, Scheduler.async));
-            fixture.detectChanges();
 
-            component.doSearch('');
-            expect(component.loading).toBe(true);
-
-
-            tick();
-            expect(component.loading).toBe(false);
-        }));
 
     });
 
