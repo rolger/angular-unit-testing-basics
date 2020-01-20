@@ -3,6 +3,7 @@ import {Country} from './country';
 import {CountrySearchService} from './country-search-service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {of} from 'rxjs/internal/observable/of';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 describe('CountryComponent', () => {
     let COUNTRIES;
