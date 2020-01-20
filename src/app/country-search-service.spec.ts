@@ -1,26 +1,13 @@
+import {Country} from './country';
+
 describe('CountrySearchService', () => {
     let COUNTRIES;
 
     beforeEach(() => {
         COUNTRIES = [
-            {
-                name: 'Austria',
-                alpha2Code: 'AT',
-                flag: 'austrian-flag.jpg',
-                region: 'any',
-                regionalBlocs: [{acronym: 'tst'}],
-                latlng: [0, 1]
-            },
-            {
-                name: 'Germany',
-                alpha2Code: 'DE',
-                flag: 'german-flag.jpg',
-                region: 'any',
-                regionalBlocs: [{acronym: 'tst'}],
-                latlng: [0, 1]
-            }
+            new Country('Austria', 'AT', '', 'europe', 'EU', 20, 20),
+            new Country('Germany', 'DE', '', 'europe', 'EU', 10, 10)
         ];
-
     });
 
     describe('getCountryByCountryCode()', () => {
