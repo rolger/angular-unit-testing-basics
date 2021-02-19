@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "angular-unittest-app"
+  "defaultProject": "angular-unittest-app",
+  "cli": {
+    "analytics": false
+  }
 }
