@@ -26,10 +26,12 @@
 
         <br/>
 
-        <button mat-raised-button color="primary" (click)="send()" class="btn btn-primary" type="button">Send Letter</button>
+        <button mat-raised-button color="primary" (click)="send()" class="btn btn-primary" type="button">Send Letter
+        </button>
 
         <div *ngIf="message">
-            <mat-toolbar [ngClass]="{ 'mat-toolbar': message, 'mat-primary': message.type === 'success', 'mat-warn': message.type === 'error' }">
+            <mat-toolbar
+                    [ngClass]="{ 'mat-toolbar': message, 'mat-primary': message.type === 'success', 'mat-warn': message.type === 'error' }">
                 <mat-toolbar-row>
                     <span>{{message.text}}</span>
                 </mat-toolbar-row>

@@ -1,7 +1,18 @@
-import {Country} from './country';
+import {CountrySearchService} from "./country-search-service";
+import {ShippingCostService} from "./shipping-cost-service";
+import {LetterComponent} from "./letter.component";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
+import {NO_ERRORS_SCHEMA} from "@angular/core";
+import {of} from "rxjs/internal/observable/of";
 
 describe('LetterComponent', () => {
     let COUNTRIES;
+
+    let stubCountrySearchService: jasmine.SpyObj<CountrySearchService>;
+    let mockShippingCostService: ShippingCostService;
+    let fixture: ComponentFixture<LetterComponent>;
+    let component: LetterComponent;
+
 
     beforeEach(() => {
 
@@ -25,10 +36,28 @@ describe('LetterComponent', () => {
                 latitude: 10
             }
         ];
+
+        stubCountrySearchService = jasmine.createSpyObj(['searchCountriesByName']);
+        TestBed.configureTestingModule({
+            declarations: [
+                LetterComponent
+            ],
+            providers: [
+                {provide: CountrySearchService, useValue: stubCountrySearchService},
+                {provide: ShippingCostService, useValue: mockShippingCostService}
+            ],
+            schemas: [NO_ERRORS_SCHEMA]
+        }).compileComponents();
+
+        fixture = TestBed.createComponent(LetterComponent);
+        component = fixture.componentInstance;
     });
 
     it('should initialize countries in component', () => {
+        stubCountrySearchService.searchCountriesByName.and.returnValue(of(COUNTRIES));
+        fixture.detectChanges();
 
+        expect(component.countries).toEqual(COUNTRIES);
     });
 
 });
