@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-test": {
+    "angular-unittest-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-test",
+            "outputPath": "dist/angular-unittest-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -55,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-test:build"
+            "browserTarget": "angular-unittest-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-test:build:production"
+              "browserTarget": "angular-unittest-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-test:build"
+            "browserTarget": "angular-unittest-app:build"
           }
         },
         "test": {
@@ -101,7 +101,7 @@
         }
       }
     },
-    "angular-test-e2e": {
+    "angular-unittest-app-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -109,11 +109,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-test:serve"
+            "devServerTarget": "angular-unittest-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-test:serve:production"
+              "devServerTarget": "angular-unittest-app:serve:production"
             }
           }
         },
@@ -129,5 +129,5 @@
       }
     }
   },
-  "defaultProject": "angular-test"
+  "defaultProject": "angular-unittest-app"
 }
