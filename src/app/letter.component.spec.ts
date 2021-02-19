@@ -1,12 +1,29 @@
 import {Country} from './country';
 
-describe('Testing LetterComponent', () => {
+describe('LetterComponent', () => {
     let COUNTRIES;
 
     beforeEach(() => {
+
         COUNTRIES = [
-            new Country('Austria', 'AT', '', 'europe', 'EU', 20, 20),
-            new Country('Germany', 'DE', '', 'europe', 'EU', 10, 10)
+            {
+                name: 'Austria',
+                alpha2Code: 'AT',
+                flag: '',
+                region: 'europe',
+                regionBloc: 'EU',
+                longitude: 20,
+                latitude: 20
+            },
+            {
+                name: 'Germany',
+                alpha2Code: 'DE',
+                flag: '',
+                region: 'europe',
+                regionBloc: 'EU',
+                longitude: 10,
+                latitude: 10
+            }
         ];
     });
 

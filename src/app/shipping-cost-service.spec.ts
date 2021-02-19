@@ -1,8 +1,7 @@
 import {Country} from './country';
 import {ShippingCostService} from './shipping-cost-service';
 
-describe('Testing ShippingCostService', () => {
-    let service: ShippingCostService;
+describe('ShippingCostService', () => {
 
     beforeEach(() => {
     });

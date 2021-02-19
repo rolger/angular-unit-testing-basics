@@ -6,7 +6,15 @@ describe('CountryComponent', () => {
 
     beforeEach(() => {
         COUNTRIES = [
-            new Country('Austria', 'AT', '', 'europe', 'EU', 0, 0)
+            {
+                name: 'Austria',
+                alpha2Code: 'AT',
+                flag: '',
+                region: 'europe',
+                regionBloc: 'EU',
+                longitude: 0,
+                latitude: 0
+            } as Country
         ];
     });
 

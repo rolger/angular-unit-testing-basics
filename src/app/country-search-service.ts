@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-import {Country} from './country';
+import {Country, RestCountry} from './country';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable()
 export class CountrySearchService {
@@ -13,47 +13,47 @@ export class CountrySearchService {
     }
 
     public getCountryByCountryCode(countryCode: string): Observable<Country[]> {
-        return this.http.get<any[]>(this.apiURL)
+        return this.http.get<RestCountry[]>(this.apiURL)
             .pipe(
                 map(countryArray => {
                     return countryArray
                         .filter(item => item.alpha2Code === countryCode)
                         .map(item => {
-                                return new Country(
-                                    item.name,
-                                    item.alpha2Code,
-                                    item.flag,
-                                    item.region,
-                                    item.regionalBlocs === undefined || item.regionalBlocs.length === 0
-                                        ? '' : item.regionalBlocs[0].acronym,
-                                    item.latlng[0],
-                                    item.latlng[1]
-                                );
+                                return {
+                                    name: item.name,
+                                    alpha2Code: item.alpha2Code,
+                                    flag: item.flagUrl,
+                                    region: item.region,
+                                    regionBloc: item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ? '' : item.regionalBlocs[0].acronym,
+                                    latitude: item.latlng[0],
+                                    longitude: item.latlng[1]
+                                };
                             }
                         );
-                }));
+                })
+            );
     }
 
     public searchCountriesByName(searchString: string): Observable<Country[]> {
-        return this.http.get<any[]>(this.apiURL)
+        return this.http.get<RestCountry[]>(this.apiURL)
             .pipe(
+                tap(c => console.log("loading " + c.length + " elements via http.")),
                 map(countryArray => {
                     return countryArray
                         .filter(item => item.name.search(searchString) >= 0)
                         .map(item => {
-                                return new Country(
-                                    item.name,
-                                    item.alpha2Code,
-                                    item.flag,
-                                    item.region,
-                                    item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ?
-                                        '' : item.regionalBlocs[0].acronym,
-                                    item.latlng[0],
-                                    item.latlng[1]
-                                );
-                            }
-                        );
-                }));
+                            return {
+                                name: item.name,
+                                alpha2Code: item.alpha2Code,
+                                flag: item.flagUrl,
+                                region: item.region,
+                                regionBloc: item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ? '' : item.regionalBlocs[0].acronym,
+                                latitude: item.latlng[0],
+                                longitude: item.latlng[1]
+                            };
+                        });
+                })
+            );
     }
 }
 
