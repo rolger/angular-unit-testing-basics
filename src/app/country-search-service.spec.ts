@@ -1,8 +1,6 @@
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {TestBed} from "@angular/core/testing";
 import {HttpClient} from "@angular/common/http";
 import {CountrySearchService} from "./country-search-service";
-import {ShippingCostService} from "./shipping-cost-service";
 
 // for documentation see https://angular.io/guide/http#testing-http-requests
 describe('CountrySearchService', () => {
@@ -30,16 +28,8 @@ describe('CountrySearchService', () => {
     ];
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            imports: [HttpClientTestingModule],
-            providers: [
-                CountrySearchService
-            ]
-        });
+        // create the service with TestBed and retrieve HttpClient & HttpTestingController
 
-        sut = TestBed.inject(CountrySearchService);
-        httpClient = TestBed.inject(HttpClient);
-        httpTestingController = TestBed.inject(HttpTestingController);
     });
 
     afterEach(() => {
@@ -50,23 +40,11 @@ describe('CountrySearchService', () => {
     describe('getCountryByCountryCode()', () => {
 
         it('should call a http GET request with empty result', () => {
-            sut.getCountryByCountryCode("AT").subscribe(
-                    countries => expect(countries.length).toEqual(0),
-                fail
-            );
 
-            const req = httpTestingController.expectOne(sut.apiURL);
-            req.flush([]); // Respond with no heroes
         });
 
         it('should filter the countryCode', () => {
-            sut.getCountryByCountryCode("AT").subscribe(
-                countries => expect(countries.length).toEqual(1),
-                fail
-            );
 
-            const req = httpTestingController.expectOne(sut.apiURL);
-            req.flush(COUNTRIES);
         });
 
     });
