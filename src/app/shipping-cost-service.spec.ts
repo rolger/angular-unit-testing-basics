@@ -5,6 +5,7 @@ import {CountryService} from './country-service';
 import {Money} from './money';
 import anything = jasmine.anything;
 
+// documentation https://angular.io/guide/testing-services#testing-services
 describe('ShippingCostService', () => {
     let stubCountryService: jasmine.SpyObj<CountryService>;
     let mockSendService: jasmine.SpyObj<LetterSendService>;

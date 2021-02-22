@@ -4,6 +4,8 @@ import {CountrySearchService} from './country-search-service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {cold, getTestScheduler} from "jasmine-marbles";
+import {By} from "@angular/platform-browser";
+import {of} from "rxjs/internal/observable/of";
 
 describe('CountryComponent', () => {
     let COUNTRIES;
@@ -36,16 +38,14 @@ describe('CountryComponent', () => {
 
         fixture = TestBed.createComponent(CountryComponent);
         component = fixture.componentInstance;
-
+        let element = fixture.nativeElement;      // to access DOM element
     });
 
     describe('doSearch()', () => {
 
-        it('should load countries via search', () => {
+        it('should load countries via search with marbles', () => {
             let httpResponse = cold('---c|', {c: COUNTRIES});
-
             stubCountrySearchService.searchCountriesByName.and.returnValue(httpResponse);
-            fixture.detectChanges();
 
             component.doSearch('');
 
@@ -54,9 +54,41 @@ describe('CountryComponent', () => {
             expect(component.countries).toEqual(COUNTRIES);
         });
 
-        it('should should be in state loading false', function () {
+        it('should load countries via search', () => {
+            let httpResponse = of(COUNTRIES);
+            stubCountrySearchService.searchCountriesByName.and.returnValue(httpResponse);
 
+            component.doSearch('');
+
+            expect(component.countries).toEqual(COUNTRIES);
         });
 
     });
+
+    describe('doSearchAsync()', () => {
+        it('should switch loading state', function () {
+            let httpResponse = of(COUNTRIES);
+            stubCountrySearchService.searchCountriesByName.and.returnValue(httpResponse);
+
+            fixture.detectChanges();
+            let debugElement = fixture.debugElement;
+            let q = debugElement.query(By.css('.text-center'));
+            expect(debugElement.query(By.css('.text-center')).nativeElement.innerText).toBe("");
+
+            component.doSearchAsync('');
+
+            fixture.detectChanges();
+
+            q = debugElement.query(By.css('.text-center'));
+            expect(debugElement.query(By.css('.text-center')).nativeElement.innerText).toBe('Loading...');
+            expect(component.loading).toEqual(true);
+
+            fixture.whenStable().then(() => {
+                fixture.detectChanges();
+                expect(debugElement.query(By.css('.text-center')).nativeElement.innerText).toBe("");
+            });
+        });
+
+    });
+
 });

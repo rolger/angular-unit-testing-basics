@@ -29,14 +29,18 @@ export class CountryComponent {
     doSearchAsync(searchString: string) {
         this.loading = true;
 
-        var p = new Promise((resolve) => {
+        return new Promise((resolve) => {
+            let result;
             this.searchService
                 .searchCountriesByName(searchString)
                 .subscribe((data) => {
-                    this.countries = data;
-                    this.loading = false;
+                    result = data;
                 });
-            resolve();
-        });
+            resolve(result);
+        })
+            .then((data: Country[]) => {
+                this.countries = data;
+                this.loading = false;
+            });
     }
 }
