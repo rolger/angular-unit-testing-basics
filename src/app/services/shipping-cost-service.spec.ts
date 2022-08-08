@@ -1,8 +1,8 @@
-import {Country} from './country';
+import {Country} from '../model/country';
 import {ShippingCostService} from './shipping-cost-service';
 import {LetterSendService} from './letter-send-service';
 import {CountryService} from './country-service';
-import {Money} from './money';
+import {Money} from '../model/money';
 import anything = jasmine.anything;
 
 // documentation https://angular.io/guide/testing-services#testing-services

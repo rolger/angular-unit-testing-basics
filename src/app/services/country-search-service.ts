@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
-import {Country, RestCountry} from './country';
+import {Country, RestCountry} from '../model/country';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 

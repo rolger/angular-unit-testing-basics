@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Money} from './money';
+import {Money} from '../model/money';
 import {CountryService} from './country-service';
-import {Country} from './country';
+import {Country} from '../model/country';
 import {LetterSendService} from './letter-send-service';
 
 @Injectable()

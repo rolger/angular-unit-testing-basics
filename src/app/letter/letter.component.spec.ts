@@ -1,5 +1,5 @@
-import {CountrySearchService} from "./country-search-service";
-import {ShippingCostService} from "./shipping-cost-service";
+import {CountrySearchService} from "../services/country-search-service";
+import {ShippingCostService} from "../services/shipping-cost-service";
 import {LetterComponent} from "./letter.component";
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {NO_ERRORS_SCHEMA} from "@angular/core";

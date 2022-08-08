@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Country} from './country';
-import {CountrySearchService} from './country-search-service';
-import {ShippingCostService} from './shipping-cost-service';
+import {Country} from '../model/country';
+import {CountrySearchService} from '../services/country-search-service';
+import {ShippingCostService} from '../services/shipping-cost-service';
 
 
 @Component({

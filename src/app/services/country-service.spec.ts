@@ -1,7 +1,7 @@
 import {CountryService} from './country-service';
 import {CountrySearchService} from './country-search-service';
 import {of} from 'rxjs/internal/observable/of';
-import {Country} from './country';
+import {Country} from '../model/country';
 
 describe('CountryService', () => {
     let COUNTRIES;

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
-import {Country} from './country';
-import {CountrySearchService} from './country-search-service';
+import {Country} from '../model/country';
+import {CountrySearchService} from '../services/country-search-service';
 
 @Component({
     selector: 'app-country',

@@ -1,5 +1,5 @@
-import {Country} from './country';
-import {Money} from './money';
+import {Country} from '../model/country';
+import {Money} from '../model/money';
 
 export class LetterSendService {
 

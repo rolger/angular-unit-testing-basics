@@ -1,6 +1,6 @@
 import {CountryComponent} from './country.component';
-import {Country} from './country';
-import {CountrySearchService} from './country-search-service';
+import {Country} from '../model/country';
+import {CountrySearchService} from '../services/country-search-service';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {cold, getTestScheduler} from "jasmine-marbles";
