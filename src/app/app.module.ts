@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {CountryComponent} from './country-search/country.component';
 import {CountrySearchService} from './services/country-search-service';
 import {ShippingCostService} from './services/shipping-cost-service';
-import {CountryService} from './services/country-service';
+import {CountryInformationService} from './services/country-information-service';
 import {LetterSendService} from './services/letter-send-service';
 import {LetterComponent} from './letter/letter.component';
 import {AppComponent} from './app.component';
@@ -26,7 +26,7 @@ import {AngularMaterialModule} from './angular-material.moduls';
         LetterComponent
     ],
     bootstrap: [AppComponent],
-    providers: [CountrySearchService, ShippingCostService, CountryService, LetterSendService],
+    providers: [CountrySearchService, ShippingCostService, CountryInformationService, LetterSendService],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {

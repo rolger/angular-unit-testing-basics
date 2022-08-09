@@ -36,19 +36,7 @@ export class CountrySearchService {
                 map(countryArray => {
                     return countryArray
                         .filter(item => item.alpha2Code === countryCode)
-                        .map(item => {
-                                return {
-                                    name: item.name,
-                                    alpha2Code: item.alpha2Code,
-                                    flag: item.flag,
-                                    region: item.region,
-                                    regionBloc: item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ?
-                                        '' : item.regionalBlocs[0].acronym,
-                                    latitude: item.latlng === undefined ? 0 : item.latlng[0],
-                                    longitude: item.latlng === undefined ? 0 : item.latlng[1]
-                                };
-                            }
-                        );
+                        .map(item => this.toCountry(item));
                 })
             );
     }
@@ -60,21 +48,24 @@ export class CountrySearchService {
                 map(countryArray => {
                     return countryArray
                         .filter(item => item.name.search(searchString) >= 0)
-                        .map(item => {
-                            return {
-                                name: item.name,
-                                alpha2Code: item.alpha2Code,
-                                flag: item.flag,
-                                region: item.region,
-                                regionBloc: item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ?
-                                    '' : item.regionalBlocs[0].acronym,
-                                latitude: item.latlng === undefined ? 0 : item.latlng[0],
-                                longitude: item.latlng === undefined ? 0 : item.latlng[1]
-                            };
-                        });
+                        .map(item => this.toCountry(item));
                 })
             );
     }
+
+    private toCountry(item: RestCountry): Country {
+        return {
+            name: item.name,
+            alpha2Code: item.alpha2Code,
+            flag: item.flag,
+            region: item.region,
+            regionBloc: item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ?
+                '' : item.regionalBlocs[0].acronym,
+            latitude: item.latlng === undefined ? 0 : item.latlng[0],
+            longitude: item.latlng === undefined ? 0 : item.latlng[1]
+        };
+    }
+
 }
 
 
