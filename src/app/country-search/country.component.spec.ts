@@ -18,7 +18,7 @@ describe('CountryComponent', () => {
             {
                 name: 'Austria',
                 alpha2Code: 'AT',
-                flag: '',
+                flagUrl: '',
                 region: 'europe',
                 regionBloc: 'EU',
                 longitude: 0,

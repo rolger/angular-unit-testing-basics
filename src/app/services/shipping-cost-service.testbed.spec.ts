@@ -1,7 +1,7 @@
 import {Country} from '../model/country';
 import {ShippingCostService} from './shipping-cost-service';
-import {CountryInformationService} from './country-information-service';
 import {LetterSendService} from './letter-send-service';
+import {CountryInformationService} from './country-information-service';
 import {TestBed} from '@angular/core/testing';
 import {Money} from '../model/money';
 import anything = jasmine.anything;
@@ -30,7 +30,8 @@ describe('ShippingCostService wtih TestBed', () => {
     it('should calculate costs for common market', () => {
         stubCountryService.isInCommonMarket.and.returnValue(true);
 
-        service.calculateCostsAndSend('', 'mockCountry' as unknown as Country, '');
+            const mockCountry = 'mockCountry' as unknown as Country;
+            service.calculateCostsAndSend('', mockCountry, '');
 
         expect(mockSendService.sendTo).toHaveBeenCalledWith(anything(), anything(), new Money(5));
     });

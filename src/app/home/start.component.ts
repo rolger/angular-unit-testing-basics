@@ -4,5 +4,5 @@ import { Component } from '@angular/core';
     templateUrl: './start.component.html'
 })
 export class StartComponent {
-    public pageTitle = 'Welcome to the Angular Unit Testing with RxJS Example App';
+    public pageTitle = 'Welcome to the Angular Unit Testing Basic Example App';
 }

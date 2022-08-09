@@ -45,9 +45,15 @@ export class CountrySearchService {
         return this.http.get<RestCountry[]>(this.apiURL)
             .pipe(
                 tap(c => console.log('loading ' + c.length + ' elements via http.')),
+                tap(_ => {
+                    const now: Date = new Date();
+                    if (now.getSeconds() % 11 === 0) {
+                        throw new Error('Service unavailable!');
+                    }
+                }),
                 map(countryArray => {
                     return countryArray
-                        .filter(item => item.name.search(searchString) >= 0)
+                        .filter(item => item.name.toLowerCase().search(searchString) >= 0)
                         .map(item => this.toCountry(item));
                 })
             );
@@ -57,7 +63,7 @@ export class CountrySearchService {
         return {
             name: item.name,
             alpha2Code: item.alpha2Code,
-            flag: item.flag,
+            flagUrl: item.flag,
             region: item.region,
             regionBloc: item.regionalBlocs === undefined || item.regionalBlocs.length === 0 ?
                 '' : item.regionalBlocs[0].acronym,

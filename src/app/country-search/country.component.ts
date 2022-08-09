@@ -11,6 +11,7 @@ import {CountrySearchService} from '../services/country-search-service';
 export class CountryComponent {
     loading = false;
     countries: Country [];
+    errorMessage: string;
 
     constructor(private searchService: CountrySearchService) {
         this.countries = [];
@@ -20,10 +21,17 @@ export class CountryComponent {
         this.loading = true;
         this.searchService
             .searchCountriesByName(searchString)
-            .subscribe((data) => {
-                this.countries = data;
-                this.loading = false;
-            });
+            .subscribe(
+                data => {
+                    this.countries = data;
+                    this.errorMessage = '';
+                    this.loading = false;
+                },
+                error => {
+                    this.countries = [];
+                    this.errorMessage = error.message;
+                    this.loading = false;
+                });
     }
 
     doSearchAsync(searchString: string) {
@@ -33,9 +41,13 @@ export class CountryComponent {
             let result;
             this.searchService
                 .searchCountriesByName(searchString)
-                .subscribe((data) => {
-                    result = data;
-                });
+                .subscribe(
+                    data => {
+                        result = data;
+                    },
+                    error => {
+                        result = [];
+                    });
             resolve(result);
         })
             .then((data: Country[]) => {

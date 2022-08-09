@@ -12,7 +12,7 @@ describe('CountryService', () => {
             {
                 name: 'Austria',
                 alpha2Code: 'AT',
-                flag: '',
+                flagUrl: '',
                 region: 'europe',
                 regionBloc: 'EU',
                 longitude: 0,
@@ -31,7 +31,7 @@ describe('CountryService', () => {
             const austria = {
                 name: 'Austria',
                 alpha2Code: 'AT',
-                flag: '',
+                flagUrl: '',
                 region: 'europe',
                 regionBloc: 'EU',
                 longitude: 0,
