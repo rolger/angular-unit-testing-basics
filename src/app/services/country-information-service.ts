@@ -3,7 +3,7 @@ import {CountrySearchService} from './country-search-service';
 import {Country} from '../model/country';
 
 @Injectable()
-export class CountryService {
+export class CountryInformationService {
     homeBase = 'AT';
     austria: Country;
 

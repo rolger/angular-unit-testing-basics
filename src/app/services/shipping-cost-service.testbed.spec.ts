@@ -1,14 +1,14 @@
 import {Country} from '../model/country';
 import {ShippingCostService} from './shipping-cost-service';
-import {CountryService} from "./country-service";
-import {LetterSendService} from "./letter-send-service";
-import {TestBed} from "@angular/core/testing";
-import {Money} from "../model/money";
+import {CountryInformationService} from './country-information-service';
+import {LetterSendService} from './letter-send-service';
+import {TestBed} from '@angular/core/testing';
+import {Money} from '../model/money';
 import anything = jasmine.anything;
 
 // documentation https://angular.io/guide/testing-services#testing-services
 describe('ShippingCostService wtih TestBed', () => {
-    let stubCountryService: jasmine.SpyObj<CountryService>;
+    let stubCountryService: jasmine.SpyObj<CountryInformationService>;
     let mockSendService: jasmine.SpyObj<LetterSendService>;
     let service: ShippingCostService;
 
@@ -19,7 +19,7 @@ describe('ShippingCostService wtih TestBed', () => {
         TestBed.configureTestingModule({
             providers: [
                 ShippingCostService,
-                {provide: CountryService, useValue: stubCountryService},
+                {provide: CountryInformationService, useValue: stubCountryService},
                 {provide: LetterSendService, useValue: mockSendService}
             ]
         });

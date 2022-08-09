@@ -1,11 +1,11 @@
-import {CountryService} from './country-service';
+import {CountryInformationService} from './country-information-service';
 import {CountrySearchService} from './country-search-service';
 import {of} from 'rxjs/internal/observable/of';
 import {Country} from '../model/country';
 
 describe('CountryService', () => {
     let COUNTRIES;
-    let service: CountryService;
+    let service: CountryInformationService;
 
     beforeEach(() => {
         COUNTRIES = [
@@ -22,7 +22,7 @@ describe('CountryService', () => {
         const stubCountrySearchService = jasmine.createSpyObj<CountrySearchService>(['getCountryByCountryCode']);
         stubCountrySearchService.getCountryByCountryCode.and.returnValue(of(COUNTRIES));
 
-        service = new CountryService(stubCountrySearchService);
+        service = new CountryInformationService(stubCountrySearchService);
     });
 
     describe('isInCommonMarket()', () => {
