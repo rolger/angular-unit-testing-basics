@@ -1,17 +1,25 @@
-<section class="mat-typography title-group">
-    <h1>{{title}}</h1>
-    <mat-divider></mat-divider>
-</section>
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <a class="navbar-brand">{{pageTitle}}</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link"
+               [routerLink]="['/start']"
+               routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+               [routerLink]="['/letter']"
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{ exact : true}">Send a letter</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+               [routerLink]="['/country-search']"
+               routerLinkActive="active">Search countries</a>
+        </li>
+    </ul>
+</nav>
 
-
-<mat-tab-group>
-    <mat-tab label="Send a letter">
-        <app-letter></app-letter>
-    </mat-tab>
-    <mat-tab label="Search countries">
-        <app-country></app-country>
-    </mat-tab>
-</mat-tab-group>
-
-
-
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {CountrySearchService} from './country-search-service';
-import {Country} from './country';
+import {Country} from '../model/country';
 
 @Injectable()
-export class CountryService {
+export class CountryInformationService {
     homeBase = 'AT';
     austria: Country;
 
@@ -41,7 +41,7 @@ export class CountryService {
         return dist;
     }
 
-    private toRadians(value): number {
+    private toRadians(value: number): number {
         return value * Math.PI / 180;
     }
 }

@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-    title = 'Unit Testing Example App';
+    pageTitle: 'Angular Unit Testing Basics Example App';
 }

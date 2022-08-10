@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
-import {Country} from './country';
-import {CountrySearchService} from './country-search-service';
-import {ShippingCostService} from './shipping-cost-service';
+import {Country} from '../model/country';
+import {CountrySearchService} from '../services/country-search-service';
+import {ShippingCostService} from '../services/shipping-cost-service';
 
 
 @Component({
@@ -14,14 +14,14 @@ export class LetterComponent implements OnInit {
     countries: Country [];
 
     content: string;
-    selectedDestination: Country;
+    selectedDestination: Country | undefined;
     isExpressMode: boolean;
 
     message: any;
 
     constructor(private searchService: CountrySearchService, private deliveryService: ShippingCostService) {
         this.countries = [];
-        this.selectedDestination = null;
+        this.selectedDestination = undefined;
         this.content = '';
         this.isExpressMode = false;
     }
@@ -33,11 +33,10 @@ export class LetterComponent implements OnInit {
     loadCountries() {
         this.searchService
             .searchCountriesByName('')
-            .subscribe((data) => {
+            .subscribe(data => {
                 this.countries = data;
             });
     }
-
 
     send() {
         if (this.inputIsInvalid()) {
@@ -50,7 +49,7 @@ export class LetterComponent implements OnInit {
     }
 
     private inputIsInvalid() {
-        if (this.content == '') {
+        if (this.content === '') {
             this.message = {type: 'error', text: 'You must enter a text.'};
             return true;
         }
@@ -62,14 +61,14 @@ export class LetterComponent implements OnInit {
     }
 
     private sendLetter() {
-        this.deliveryService.calculateCostsAndSend(this.content, this.selectedDestination,
+        this.deliveryService.calculateCostsAndSend(this.content, this.selectedDestination as Country,
             this.isExpressMode ? 'EXPRESS' : 'Normal');
     }
 
     private clearInput() {
         this.content = '';
         this.isExpressMode = false;
-        this.selectedDestination = null;
+        this.selectedDestination = undefined;
     }
 
     private displaySuccess() {
