@@ -33,7 +33,7 @@ export class LetterComponent implements OnInit {
     loadCountries() {
         this.searchService
             .searchCountriesByName('')
-            .subscribe((data) => {
+            .subscribe(data => {
                 this.countries = data;
             });
     }
@@ -49,7 +49,7 @@ export class LetterComponent implements OnInit {
     }
 
     private inputIsInvalid() {
-        if (this.content == '') {
+        if (this.content === '') {
             this.message = {type: 'error', text: 'You must enter a text.'};
             return true;
         }

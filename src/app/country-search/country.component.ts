@@ -49,10 +49,9 @@ export class CountryComponent {
                         result = [];
                     });
             resolve(result);
-        })
-            .then((data: Country[]) => {
-                this.countries = data;
-                this.loading = false;
-            });
+        }).then((data: Country[]) => {
+            this.countries = data;
+            this.loading = false;
+        });
     }
 }

@@ -47,7 +47,6 @@ describe('CountrySearchService', () => {
     });
 
     describe('getCountryByCountryCode()', () => {
-
         it('should call a http GET request with empty result', () => {
             sut.getCountryByCountryCode('AT').subscribe(
                 countries => expect(countries.length).toEqual(0),
@@ -55,7 +54,7 @@ describe('CountrySearchService', () => {
             );
 
             const req = httpTestingController.expectOne(sut.apiURL);
-            req.flush([]); // Respond with no heroes
+            req.flush([]); // Respond with no data
         });
 
         it('should filter the countryCode', () => {
