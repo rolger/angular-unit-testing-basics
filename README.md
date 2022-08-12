@@ -1,6 +1,6 @@
 # angular-unit-testing-basics
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-w3myut)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/github.com/rolger/angular-unit-testing-basics)
 
 This is a basic Angular application for understanding and implementing Unit Tests with Angular. The application consists two tabs with some functionality.
 
